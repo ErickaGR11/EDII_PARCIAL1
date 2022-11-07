@@ -134,25 +134,32 @@ void Inserta_ordD(Tcab *c, int dato){
 }
 //eliminar inicio
 void elimina_inicio(Tcab *c){
-    if(c->inicio !=NULL && c->inicio==c->fin){
+    if(c->inicio !=NULL && c->inicio!=c->fin){
         c->inicio=c->inicio->der;
         free(c->inicio->izq);
         c->inicio->izq=NULL;
-    }else{
-        free(c->inicio);
-        c->inicio=c->fin=NULL;
+    }
+    else{
+        if(c->inicio==c->fin)
+        {
+         free(c->inicio);
+         c->inicio=c->fin=NULL;
+        }
     }
 }
 //eliminar final
 void elimina_fin(Tcab *c){
-    if(c->inicio !=NULL && c->inicio==c->fin){
+    if(c->fin !=NULL && c->inicio!=c->fin){
         c->fin=c->fin->izq;
         free(c->fin->der);
         c->fin->der=NULL;
         printf("entro");
     }else{
-        free(c->fin);
-        c->inicio=c->fin=NULL;
+        if(c->inicio==c->fin)
+        {
+         free(c->fin);
+         c->inicio=c->fin=NULL;
+        }
     }
 }
 
